@@ -1,0 +1,126 @@
+ul{
+    list-style-type: none;
+    padding: 0;
+    line-height: 1.5em;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+main{
+    max-width: 1200px;
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+
+footer { 
+    max-width: 100%;
+}
+
+.box{
+    width: 300px;
+    height: 200px;
+    padding: 0px 20px 0px 5px;
+    justify-content: center;
+    gap: 18px;
+
+    border: 5px solid #000;
+    background: linear-gradient(131deg, #83E2FF 2.61%, #007CA2 57.36%, #143979 98.8%);
+}
+
+h1{
+    color: #2050DF;
+    font-size: 55.142px;
+    line-height: normal;
+    text-shadow: 2px 2px 2px grey;
+}
+
+h2{
+    color: #DDA600;
+    text-shadow: 2px 2px 2px #000;
+    font-size: 20px;
+}
+
+.box h2{
+    background-color: #143979;
+    margin: 0;
+    padding: 10px;
+}
+
+h1, h2{
+    text-align: center;
+    font-family: "Jersey 25", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+body{
+    font-family: "Gabarito", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    color:white;
+
+    margin:auto;
+    text-align:center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), 
+                                rgba(0, 0, 0, 0.5)), 
+                url(images/carpet.png) repeat;
+}
+
+#banner{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+    padding: 20px;
+    gap: 80px;
+}
+
+
+.container{
+    height: 250px;
+    width: 500px;
+    color: lightgreen;
+    font-weight: 600;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    font-style: italic;
+    font-size: 30px;
+
+    background: linear-gradient(rgba(0, 0, 0, 0.5), 
+                                rgba(0, 0, 0, 0.5)), 
+                url(images/bowling.png);
+    box-shadow: 0 0 50px 1px cyan;
+
+    animation: flicker 8s step-start infinite; 
+}
+
+.container:hover{
+    background: url(images/error.jpg);
+    cursor:pointer;
+}
+
+@keyframes flicker {
+    0% { opacity: 100%; }
+    50% { opacity: 100%; }
+    52% { opacity: 50%; }
+    54% { opacity: 100%; }
+    90% { opacity: 100%; }
+    98% { opacity: 50%; }
+    100% { opacity: 100%; }
+}
+    
+#middle, #left, #right{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
