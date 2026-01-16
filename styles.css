@@ -2,11 +2,29 @@ ul{
     list-style-type: none;
     padding: 0;
     line-height: 1.5em;
+    margin: 0;
 }
 
 a{
     text-decoration: none;
     color: white;
+    font-size:90%;
+    display:block;
+    padding: 0.5em 0em;
+}
+
+.box a{
+    border: solid rgba(0, 255, 255, 0.583) 0.5px;
+}
+
+a:hover{
+    background-color:rgba(28, 50, 125, 0.5);
+    color:#ffd044;
+    text-shadow: 2px 2px 2px #000;
+}
+
+a:active{
+    background-color:rgba(2, 13, 48, 0.5);
 }
 
 main{
@@ -22,9 +40,12 @@ footer {
     max-width: 100%;
 }
 
+footer a{
+    display:flex;
+}
+
 .box{
     width: 300px;
-    height: 200px;
     padding: 0px;
     justify-content: center;
     gap: 18px;

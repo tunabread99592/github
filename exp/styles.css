@@ -12,7 +12,6 @@ body{
     color: #13265C;
 
     background-color: #13265C;
-    max-width: 1200px;
 }
 
 
@@ -31,21 +30,14 @@ header, a{
     border-radius: 20px;
 }
 
-a{
-    display: flex;
-    background-color: lavender;
-    padding: 1em;
-    border-radius: 20px;
-}
-
 a:hover{
-    border:lavender solid 2px;
+    border:lavender;
     color:lavender;
     background-color:#13265C;
 }
 
 a:active{
-    border:#9575CD solid 2px;
+    border:#9575CD;
     color:#9575CD;
     background-color:#13265C;
 }
