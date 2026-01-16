@@ -1,0 +1,51 @@
+body{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 3em;
+    text-align: center;
+
+
+    font-family: "Averia Libre", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    color: #13265C;
+
+    background-color: #13265C;
+    max-width: 1200px;
+}
+
+
+h1{
+    font-weight: 600;
+    font-style: bold;
+}
+
+h2{
+    font-style: italic;
+}
+
+header, a{
+    background-color: lavender;
+    padding: 2em;
+    border-radius: 20px;
+}
+
+a{
+    display: flex;
+    background-color: lavender;
+    padding: 1em;
+    border-radius: 20px;
+}
+
+a:hover{
+    border:lavender solid 2px;
+    color:lavender;
+    background-color:#13265C;
+}
+
+a:active{
+    border:#9575CD solid 2px;
+    color:#9575CD;
+    background-color:#13265C;
+}
