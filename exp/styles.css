@@ -9,7 +9,7 @@ body{
     font-family: "Averia Libre", system-ui;
     font-weight: 400;
     font-style: normal;
-    color: #13265C;
+    color: lavender;
 
     background-color: #13265C;
     max-width: 1200px;
@@ -26,22 +26,27 @@ h2{
 }
 
 header, a{
-    background-color: lavender;
     padding: 2em;
     border-radius: 20px;
 }
 
 a{
-    display: flex;
+    display: block;
+    max-width: fit-content;
     background-color: lavender;
+    margin: auto;
     padding: 1em;
     border-radius: 20px;
+
+    text-decoration: none;
+    color: #13265C;
 }
 
 a:hover{
     border:lavender solid 2px;
     color:lavender;
     background-color:#13265C;
+    box-sizing: border-box;
 }
 
 a:active{
