@@ -1,0 +1,67 @@
+body{
+    font-family: "Chelsea Market", system-ui;
+    font-weight: 400;
+    font-style: normal;
+
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    background-image: url(images/hill2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 80vh;
+}
+
+
+header{
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+    width: 55vh;
+
+    margin: 3em;
+    color: white;
+    background-color: rgb(255, 123, 0);
+    line-height: 0.9em;
+}
+
+
+div{
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    overflow: hidden;
+    width: 500px;
+    height: 400px;
+
+    background-color: white;
+    background-image: linear-gradient(white 70%,rgb(197, 197, 197));
+}
+
+#thing{
+    padding: 2em;
+}
+
+#frame{
+    position: absolute;
+    z-index: 1;
+    object-fit: cover;
+}
+
+p{
+    position: absolute;
+    font-weight: 1000;
+    color: rgb(255, 123, 0);
+    background-image: linear-gradient(white 50%,rgb(197, 197, 197));
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+    
+    padding: 1em;
+    display: block;
+    min-width: 100px;
+
+    bottom: -10px;
+    z-index: 2;
+}

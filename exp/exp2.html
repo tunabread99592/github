@@ -4,20 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experiment 2</title>
+    <link rel="stylesheet" href="styles2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Welcome to the Bog</h1>
-    <p>Here is a</p>
+    <header>
+        <h1>Welcome to the Bog</h1>
+        <h2 >Here is a</h2>
+    </header>
+
+    <div>
+        <img id = frame src="images/frame.png" height="400px">
+        <img id = thing src="images/og_dog.png" height="150px">
+        <p id="presenting">dog</p>
+    </div>
+
     <script>
-        
-        Number = prompt ("Give me a number");{
-            console.log(`Here is a ${animal}`)
-        }
-        
 
-
+        var userNumber = Number(prompt('Give me a number between 1 and 5'));
         var animal = ['dog', 'log', 'frog', 'smog', 'hog'];
 
+        var img = document.querySelector('#thing');
+
+        var presenting = document.querySelector('#presenting');
+  
+        function checkNumber(){
+
+            if(userNumber < 1 || userNumber > 5){
+                presenting.innerHTML = "rule-breaker";
+                img.setAttribute("src", 'images/disappointment.png');
+            }
+
+            else if (userNumber === 1){
+                presenting.innerHTML = "dog";
+            } 
+
+            else if (userNumber === 2){
+                presenting.innerHTML = "log";
+                img.setAttribute("src", 'images/og_log.png');
+            } 
+
+            else if (userNumber === 3){
+                presenting.innerHTML = "frog";
+                img.setAttribute("src", 'images/og_frog.png');
+            } 
+
+            else if (userNumber === 4){
+                presenting.innerHTML = "smog";
+                img.setAttribute("src", 'images/og_smog.png');
+            } 
+
+            else if(userNumber === 5){
+                presenting.innerHTML = "hog";
+                img.setAttribute("src", 'images/og_hog.png');
+            } 
+
+        }
+
+        checkNumber();
+
+
+
+
+        
+       
+
+
+        // function randomInt(min, max){
+        //     return Math.floor( (max-min + 1) * Math.random()) = min;
+        // }
+
+        // queryselector
+
+        // console.log(`Here is a ${animal}`);
 
     </script>
 </body>
