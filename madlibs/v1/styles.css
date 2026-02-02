@@ -48,7 +48,6 @@ main{
     text-align: center;
     font-family: "Inter", sans-serif;
     font-size: 80px;
-    font-style: bold;
     font-weight: 900;
     line-height: 150%;
 
@@ -145,6 +144,10 @@ input{
     font-family: "IBM Plex Sans", sans-serif;
     font-weight: bold;
 
+}
+
+input:focus {
+    background: #FFC464;
 }
 
 .firstDiv{
