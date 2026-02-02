@@ -1,0 +1,241 @@
+/* base */
+
+body{
+    font-family: "IBM Plex Sans", sans-serif;
+    margin: 0px;
+}
+
+
+#start, #end{
+    flex-direction: column;
+}
+
+section{
+    display: flex;
+    flex-direction: row;
+    color: #085812;
+
+    margin:auto;
+    height: 100vh;
+}
+    
+
+main{
+    overflow: hidden;
+    background-color:#890001;
+    position: relative;
+}
+
+#lazySusan{
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    position: absolute;
+    top: -15%;
+    left: 50%;
+}
+
+
+/* start */
+
+#start{
+    background-image: url(images/plasticBag.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+
+    color: #890001;
+    
+    text-transform: uppercase;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-size: 80px;
+    font-style: bold;
+    font-weight: 900;
+    line-height: 150%;
+
+    margin: auto;
+    justify-content: center;
+   
+}
+
+#head1{
+    margin: 0px;
+    padding-bottom: 20px;
+}
+
+
+#head2{
+    margin: 0px;
+    color: transparent;
+    -webkit-text-stroke-width: 9px;
+    -webkit-text-stroke-color: #890001;
+    padding-bottom: 40px;
+}
+
+button{
+    font-family: "Pacifico", cursive;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 40px;
+    border: transparent;
+    background: #890001;
+    color: #E2EDF8;
+    
+    display: block;
+    padding: 1em;
+    width: 50vh;
+    margin: 0 auto;
+}
+
+button:hover{
+    border: 5px solid #890001;
+    background-color: transparent;
+    color:#890001;
+}
+
+
+#next1:active{
+    background-color: #89000180;
+}
+
+/* section */
+
+#appetizer img, #mainCourse img, #dessert img{
+    z-index: 2;
+    position: absolute;
+    left: 10%;
+}
+
+/* order form */
+
+.orderForm{
+    position: absolute;
+    right: 15%;
+    margin-top: 6em;
+
+    background-image: url(images/paper.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 0 60px 1px #564731;
+    
+    padding: 2em;
+
+    width: 400px;
+    height: fit-content;
+}
+
+form{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border: 5px solid #085812;
+}
+
+.label, .input, .firstDiv{
+    border: 2px solid #085812;
+    padding: 0.8em;
+    height: 40px;
+}
+
+input{
+    border-radius: 5px;
+    border: none;
+    background: #E2EDF8;
+    padding: 1em;
+    color: #331C00;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: bold;
+
+}
+
+.firstDiv{
+    grid-column: 1 / -1;
+}
+
+.final{
+    height: 4em;
+}
+
+.thanks{
+    font-family: "Pacifico", cursive;
+    font-size: 25px;
+    text-align: center;
+}
+
+#next1, #next2, #next3{
+   
+    display: block;
+    padding: 1em;
+    width: fit-content;
+    align-items: center;
+
+    border-radius: 40px;
+    background: #085812;
+
+    font-weight: bold;
+    color: #E2EDF8;
+}
+
+#next1:hover, #next2:hover, #next3:hover{
+    border: 3px solid #085812;
+    background-color: #E2EDF8;
+    color:#085812;
+}
+
+#next1:active, #next2:active, #next3:active{
+    background-color: #08581280;
+}
+
+
+/* end */
+
+#end{
+    background-image: url(images/bathroom.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+
+    position:relative;
+}
+
+#receipt{
+
+    position: absolute;
+    right: 20%;
+    top: 10%;
+    z-index: 2;
+
+    background-color: #E2EDF8;
+    background-image: url(images/receipt.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+    padding: 3em;
+    width: 300px;
+    height: 500px;
+
+    color: #331C00;
+    font-weight: 500;
+    box-shadow: 0 0 60px 1px #564731;
+}
+
+#end img{
+    position: absolute;
+    z-index: 1;
+    right: 0%;
+    bottom: 5%;
+}
+
+
+#end button{
+    font-size: 16px;
+    padding: 1em;
+    width: 150px;
+
+    position:relative;
+    bottom: -10%;
+}
+
+span{
+    font-family: "Pacifico", cursive;
+    color: #890001;
+}

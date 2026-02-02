@@ -4,43 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Pacifico&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
+    <script src='script.js' defer></script>
     <title>Mad Libs V1</title>
 </head>
 <body>
 
     <section id="start">
-        <h1>Dim Sum Disaster</h1>
+
+        <header>
+            <h1 id="head1">Dim Sum</h1>
+            <h1 id="head2">Disaster</h1>
+        </header>
         <button>play!</button>
+
     </section>
         
-    <section>
-       <h2>Appetizer</h2>
+    <main>
+        <img src="images/table.png" width="1200px" height="1200px" alt="table" id="lazySusan">
 
-       <form>
+        <section id="appetizer">
 
-            <div></div>
+            <img src="images/appetizer.png" width="500px" height="500px" alt="cucumber">
 
-            <label for="Animal">Animal</label>    
-            <input type="text" id="Animal">
+            <article class="orderForm">
 
-            <label for="negativeFeeling">Negative Feeling</label>    
-            <input type="text" id="negativeFeeling">
+                <h2>Appetizer</h2>
+                <form>
+                    <div class="firstDiv"></div>
 
-            <label for="Adjective1">Adjective</label>   
-            <input type="text" id="Adjective1">
+                    <div class="label"><label for="Animal">Animal</label></div>   
+                    <div class="input"><input type="text" id="Animal"></div>
 
-            <div></div>
+                    <div class="label"><label for="negativeFeeling">Negative Feeling</label></div>    
+                    <div class="input"><input type="text" id="negativeFeeling"></div>
 
-            <p>Thank You!</p>
-            <input type="submit" value="Next Order" id="next1">
+                    <div class="label"><label for="Adjective1">Adjective</label></div>   
+                    <div class="input"><input type="text" id="Adjective1"></div>
 
-        </form>
+                    <div class="label"></div>
+                    <div class="input"></div>
 
-        <!-- set form to display: grid / grid template: columns 1fr 2fr / make first div span the two columns -->
-    
+                    <div class="label final thanks"><label for="next1">Thank You!</label ></div>
+                    <div class="input final button"><input type="submit" value="Next Course" id="next1"></div>
+                </form>
+            </article>
+        
+        </section>
+
+
+        <section id="mainCourse">
+
+            <img src="images/soup.png" width="500px" height="500px" alt="mainMeal">
+
+            <article class="orderForm">
+
+                <h2>Main Course</h2>
+                <form>
+                        <div class="firstDiv"></div>
+
+                        <div class="label"><label for="largeNumber">Large number</label></div>    
+                        <div class="input"><input type="text" id="largeNumber"></div>
+
+                        <div class="label"><label for="adjective2">Adjective</label></div>    
+                        <div class="input"><input type="text" id="adjective2"></div>
+
+                        <div class="label"><label for="food">Food</label></div>   
+                        <div class="input"><input type="text" id="food"></div>
+
+                        <div class="label"></div>
+                        <div class="input"></div>
+
+                        <div class="label final thanks"><p>Thank You!</p></div>
+                        <div class="input final button"><input type="submit" value="Next Course" id="next2"></div>
+                    </form>
+            </article>
+
+        </section>
+
+
+        <section id="dessert">
+
+            <img src="images/bao.png" width="500px" height="500px" alt="dessert">
+
+            <article class="orderForm">
+
+                <h2>Dessert</h2>
+                <form>
+                        <div class="firstDiv"></div>
+
+                        <div class="label"><label for="Aggressive">Aggressive verb (past)</label></div>    
+                        <div class="input"><input type="text" id="Aggressive"></div>
+
+                        <div class="label"><label for="noun">Exciting noun</label></div>    
+                        <div class="input"><input type="text" id="noun"></div>
+
+                        <div class="label"><label for="Specific">Specific number</label></div>   
+                        <div class="input"><input type="text" id="specific"></div>
+
+                        <div class="label"><label for="name">Your full name</label></div>   
+                        <div class="input"><input type="text" id="name"></div>
+                        
+                        <div class="label final thanks"><p>Thank You!</p></div>
+                        <div class="input final button"><input type="submit" value="Finish Meal" id="next3"></div>
+                    </form>
+
+            </article>
+        </section>
+
+    </main>
+
+    <section id="end">
+
+        <img src="images/dollar.png" width="500px" height="500px">
+
+        <article id="receipt">
+            <p>Dear staff of Golden <span>Dragon</span>,</p>
+
+            <p>I am truly <span>sorry</span> for the incident today. I understand that your <span>impressive</span> establishment can’t take more than <span>20</span> orders at a time, but I was feeling really <span>peckish</span>. The <span>egg rolls</span> really <span>shot</span> through me.</p>
+
+            <p>I did not mean to cause the <span>explosion</span> in the bathroom. Please take this $<span>18.75</span>, it’s all I had.</p>
+
+            <p>Sincerely,</p>
+            <p><span>Tegan Leong</span></p>
+
+            <button>Try again</button>
+        </article>
+
     </section>
-
 
 </body>
 </html>
