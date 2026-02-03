@@ -5,6 +5,14 @@ body{
     margin: 0px;
 }
 
+.showing{
+    visibility: visible;
+}
+
+.hidden{
+    visibility: hidden;
+    display: none;
+}
 
 #start, #end{
     flex-direction: column;
@@ -56,18 +64,11 @@ main{
    
 }
 
-#head1{
-    margin: 0px;
-    padding-bottom: 20px;
-}
-
-
-#head2{
-    margin: 0px;
+h1 div{
     color: transparent;
     -webkit-text-stroke-width: 9px;
     -webkit-text-stroke-color: #890001;
-    padding-bottom: 40px;
+    padding-top: 10px;
 }
 
 button{
