@@ -27,11 +27,11 @@ main{
 }
 
 #lazySusan{
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    position: absolute;
-    top: -15%;
-    left: 50%;
+    /* transform: translate(-50%, -50%); */
+    z-index: 1;
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 
