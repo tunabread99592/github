@@ -20,16 +20,16 @@
             <h1>Dim Sum
                 <div>Disaster</div>
             </h1>
-            <button>play!</button>
+            <button id="play">play!</button>
         </header>
 
     </section>
         
-    <main class="showing">
+    <main class="hidden">
         
         <img src="images/table.png" width="1200" height="1200" alt="table" id="lazySusan">
 
-        <section id="appetizer">
+        <section id="appetizer" class="hidden">
 
             <img src="images/appetizer.png" width="500" height="500" alt="cucumber">
 
@@ -39,14 +39,14 @@
                 <form>
                     <div class="firstDiv"></div>
 
-                    <div class="label"><label for="Animal">Animal</label></div>   
-                    <div class="input"><input type="text" id="Animal" required></div>
+                    <div class="label"><label for="animal">Animal</label></div>   
+                    <div class="input"><input type="text" id="animal" required></div>
 
                     <div class="label"><label for="negativeFeeling">Negative Feeling</label></div>    
                     <div class="input"><input type="text" id="negativeFeeling" required></div>
 
-                    <div class="label"><label for="Adjective1">Adjective</label></div>   
-                    <div class="input"><input type="text" id="Adjective1" required></div>
+                    <div class="label"><label for="adjective1">Adjective</label></div>   
+                    <div class="input"><input type="text" id="adjective1" required></div>
 
                     <div class="label"></div>
                     <div class="input"></div>
@@ -59,7 +59,7 @@
         </section>
 
 
-        <section id="mainCourse">
+        <section id="mainCourse" class="hidden">
 
             <img src="images/soup.png" width="500" height="500" alt="mainMeal">
 
@@ -89,7 +89,7 @@
         </section>
 
 
-        <section id="dessert">
+        <section id="dessert" class="hidden">
 
             <img src="images/bao.png" width="500" height="500" alt="dessert">
 
@@ -99,8 +99,8 @@
                 <form>
                         <div class="firstDiv"></div>
 
-                        <div class="label"><label for="Aggressive">Aggressive verb (past)</label></div>    
-                        <div class="input"><input type="text" id="Aggressive" required></div>
+                        <div class="label"><label for="aggressive">Aggressive verb (past)</label></div>    
+                        <div class="input"><input type="text" id="aggressive" required></div>
 
                         <div class="label"><label for="noun">Exciting noun</label></div>    
                         <div class="input"><input type="text" id="noun" required></div>
@@ -120,7 +120,7 @@
 
     </main>
 
-    <section id="end" class="showing">
+    <section id="end" class="hidden">
 
         <img src="images/dollar.png" width="500" height="500" alt="money">
 
@@ -134,7 +134,7 @@
             <p>Sincerely,</p>
             <p><span>Tegan Leong</span></p>
 
-            <button>Try again</button>
+            <button id="again">Try again</button>
         </article>
 
     </section>

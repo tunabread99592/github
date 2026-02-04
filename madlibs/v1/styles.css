@@ -6,16 +6,24 @@ body{
 }
 
 .showing{
-    visibility: visible;
+    /* visibility: visible; */
+    top: 0;
 }
 
 .hidden{
-    visibility: hidden;
-    display: none;
+    /* visibility: hidden;
+    display: none; */
+    top: 100vh;
 }
 
-#start, #end{
-    flex-direction: column;
+.moveUp {
+    top: -100vh;
+}
+
+main{
+    background-color:#890001;
+    position: relative;
+    transition: all .5s ease;
 }
 
 section{
@@ -27,21 +35,17 @@ section{
     height: 100vh;
 }
     
-
-main{
-    overflow: hidden;
-    background-color:#890001;
-    position: relative;
+#start, #end{
+    flex-direction: column;
 }
 
 #lazySusan{
     /* transform: translate(-50%, -50%); */
-    z-index: 1;
+    z-index: -1;
     position: sticky;
     top: 0;
     left: 0;
 }
-
 
 /* start */
 
