@@ -167,7 +167,7 @@ button:active{
    
 }
 
-h1 div{
+header h2{
     color: transparent;
     -webkit-text-stroke-width: 9px;
     -webkit-text-stroke-color: #890001;
