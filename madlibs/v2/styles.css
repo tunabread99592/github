@@ -167,11 +167,25 @@ button:active{
    
 }
 
+header h1{
+    margin: 0;
+}
+
 header h2{
     color: transparent;
     -webkit-text-stroke-width: 9px;
     -webkit-text-stroke-color: #890001;
-    padding-top: 10px;
+    margin: 0;
+    padding: 0.1em;
+    font-size: 140px;
+}
+
+header p{
+    font-size: 16px;
+    text-transform: lowercase;
+    line-height: 1em;
+    padding: 1em;
+    font-weight: 200px;
 }
 
 /* section */
