@@ -69,3 +69,20 @@ h3{
 time{
     background-color: rgb(179, 255, 206);
 }
+
+figcaption{
+    font-style: italic;
+    font-weight: 700;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+img{
+    display: flex;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 0.7em;
+    border: solid black 3px;
+    justify-content: center;
+}
