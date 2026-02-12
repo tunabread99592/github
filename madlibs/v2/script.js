@@ -8,25 +8,15 @@
     document.querySelector('#play').addEventListener('click', function(){
        
         main.className = "showing";
-        // sections[0].className = "moveUp";
-        // sections[1].className = "showing";
-
-        sections[0].classList.add('moveUp');
-        sections[1].classList.remove('hidden');
-        sections[1].classList.add('showing');
+        sections[0].className = "moveUp";
+        sections[1].className = "showing";
     });
 
     document.querySelector('#again').addEventListener('click', function(){
-        
-        formTag.forEach(function(clearField){
-            clearField.reset();
-        })
-        
-        sections.forEach(function(section) {
-            section.className = "hidden";
-        });
 
-        main.className = "showing";
+        sections.forEach(section => {
+            section.className = "hidden";
+        })
         sections[1].className = "showing";
         
     });
@@ -37,13 +27,13 @@
         rotation += degrees;
         
         const spinny = document.querySelector('#lazySusan');
-        spinny.style.transform =  `translate(-50%,-50%) rotate(${rotation}deg)`;
+        spinny.style.transform =   `translate(-50%,0) rotate(${rotation}deg)`;
     }
 
     const madLib = document.querySelector('#receipt');
     const formTag = document.querySelectorAll('form');
 
-    formTag.forEach(function(form, index) {
+    formTag.forEach((form, index) => {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
 
