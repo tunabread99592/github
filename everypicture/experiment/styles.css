@@ -1,0 +1,116 @@
+/* basics */
+
+body{
+    background-image: url(images/mouth.png);
+    background-size: cover;
+    background-attachment: fixed;
+
+    font-family: "Roboto", sans-serif;
+    color: white;
+    overflow: hidden;
+}
+
+/* text */
+
+#center{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+
+    font-style: italic;
+}
+
+p{
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+h1{
+    font-weight: 900px;
+    font-size: 230px;
+    margin: 0;
+    padding: 0;
+    -webkit-text-stroke: white 15px;
+}
+
+h2{
+    font-weight: 100px;
+    font-size: 24px;
+    margin: 0;
+}
+
+
+#topLeft{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+}
+
+#bottomRight{
+    position: absolute;
+    bottom: 15%;
+    right: -5%;
+    transform: rotate(90deg);
+    display: inline-block;
+}
+
+/* images */
+
+img{
+    filter: blur(20px);
+    transition: all 0.5s ease-in-out;
+    animation: move 10s linear infinite, fuzzy 15s ease-in-out infinite;
+    position: absolute;
+}
+
+img:hover{
+    filter: blur(0px) !important;
+    animation-play-state: paused;
+}
+
+#car{
+    top: 5%;
+    left: 5%;
+}
+
+#charger{
+    top: 20%;
+    right: 20%;
+    animation-delay: 2s, 3s;
+}
+
+#clothes{
+    bottom: 4%;
+    left: 15%;
+    animation-delay: 6s, 1s;
+}
+
+#mirror{
+    bottom: 10%;
+    right: 10%;
+    animation-delay: 4s, 5s;
+}
+
+
+@keyframes move{
+    0% {transform: translate(0px, 0px); }
+    25% {transform: translate(40px, -20px); }
+    50% {transform: translate(0px, -40px); }
+    75% {transform: translate(-40px, -20px); }
+    100% {transform: translate(0px, 0px); }
+}
+
+@keyframes fuzzy{
+    0% {filter: blur(20px); }
+    12% {filter: blur(15px); }
+    45% {filter: blur(6px); }
+    70% {filter: blur(25px); }
+    100% {filter: blur(20px); }
+}
