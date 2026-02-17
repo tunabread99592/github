@@ -8,7 +8,11 @@ body{
 }
 
 main{
-    background-color:#890001;
+    background-image: url(images/topDown.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+
+
     position: relative;
     overflow: hidden;
     height: 100vh;
