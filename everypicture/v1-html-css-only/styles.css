@@ -1,0 +1,192 @@
+/* basics */
+
+body{
+    background-image: url(images/mouth.png);
+    background-size: cover;
+    background-attachment: fixed;
+
+    font-family: "Roboto", sans-serif;
+    color: white;
+    overflow: hidden;
+}
+
+.overlay{
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 1;
+}
+
+.overlay article{
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 111);
+    padding: 5em;
+    width: 40vw;
+    height: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 2;
+    color: black;
+    border-radius: 15px;
+    border: solid black 2px;
+}
+
+.close{
+    border-radius: 50px;
+    border: solid 2px;
+    font-weight: bold;
+    position: absolute;
+    top: 7%;
+    left: 5%;
+}
+
+.close:hover{
+    background-color: rgba(0,0,0,0.3);
+}
+
+.close:active{
+    background-color: rgba(0,0,0,0.5);
+}
+
+.showing{
+    visibility: visible;
+}
+
+.hidden{
+    display: none;
+}
+
+/* text */
+
+#center{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+
+    font-style: italic;
+}
+
+h1{
+    font-weight: 900px;
+    font-size: 230px;
+    margin: 0;
+    padding: 0;
+    -webkit-text-stroke: white 15px;
+    text-shadow: 15px 15px 0px #000000;
+
+}
+
+h2{
+    font-weight: 100px;
+    font-size: 24px;
+    margin: 0;
+}
+
+#corners p{
+    z-index: 1;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    position: absolute;
+    display: inline-block;
+}
+
+#topLeft{
+    top: 2%;
+    left: 2%;
+}
+
+#topRight{
+    transform: rotate(90deg);
+    top: 8%;
+    right: -2%;
+}
+
+#bottomRight{
+    transform: rotate(180deg);
+    bottom: 2%;
+    right: 2%;
+}
+
+#bottomLeft{
+    transform: rotate(-90deg);
+    bottom: 22%;
+    left: -9%;
+}
+
+/* images */
+
+img{
+    filter: blur(20px);
+    transition: all 0.5s ease-in-out;
+    animation: move 10s linear infinite, fuzzy 15s ease-in-out infinite;
+    position: absolute;
+}
+
+img:hover{
+    filter: blur(0px) !important;
+    animation-play-state: paused;
+}
+
+img:active{
+    filter: drop-shadow(0 0 0 yellow);
+}
+
+#car{
+    top: 5%;
+    left: 5%;
+}
+
+#book{
+    top: 2%;
+    left: 3cqb;
+    animation-delay: 5s, 7s;
+}
+
+#charger{
+    top: 20%;
+    right: 20%;
+    animation-delay: 2s, 3s;
+}
+
+#clothes{
+    bottom: 4%;
+    left: 15%;
+    animation-delay: 6s, 1s;
+}
+
+#mirror{
+    bottom: 10%;
+    right: 10%;
+    animation-delay: 4s, 5s;
+}
+
+
+@keyframes move{
+    0% {transform: translate(0px, 0px); }
+    25% {transform: translate(40px, -20px); }
+    50% {transform: translate(0px, -40px); }
+    75% {transform: translate(-40px, -20px); }
+    100% {transform: translate(0px, 0px); }
+}
+
+@keyframes fuzzy{
+    0% {filter: blur(20px); }
+    12% {filter: blur(15px); }
+    45% {filter: blur(6px); }
+    70% {filter: blur(25px); }
+    100% {filter: blur(20px); }
+}
