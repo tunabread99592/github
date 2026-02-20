@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <link rel = "stylesheet" href = "styles.css">
-    <scrip src = "script.js" defer></scrip>
+    <script src = "script.js" defer></script>
     <title>OBSESSIONS!</title>
 </head>
 <body>
@@ -27,20 +27,22 @@
         </section>
     </header>
 
-    <div class="overlay hidden">
-        <img src="images/car.png" width="356px" height="267px" alt="car" id="car">
-        <article>
-            <h3>Owning Things</h3>
-            <h4>LEGO Monster Truck</h4>
-            <p>My mom's minimalism, plus moving houses a couple times, taught me to yearn for nothing. Literally, nothing. Sometimes I wish my house would burn down so I can completely start from scratch.</p>
-            <p>However, I'm learning that life is cycling through things. My friend Dylan gave me this truck; I don't want to think about when I'll give it up.</p>
-            <button class="close">&times;</button>
-        </article>
+    <div>
+        <img src="images/car.png" width="356px" height="267px" alt="car" id="1">
+        <section id="ol-1" class="overlay hidden">
+            <article>
+                <h3>Owning Things</h3>
+                <h4>LEGO Monster Truck</h4>
+                <p>My mom's minimalism, plus moving houses a couple times, taught me to yearn for nothing. Literally, nothing. Sometimes I wish my house would burn down so I can completely start from scratch.</p>
+                <p>However, I'm learning that life is cycling through things. My friend Dylan gave me this truck; I don't want to think about when I'll give it up.</p>
+                <button class="close">&times;</button>
+            </article>
+        </section>
     </div>
 
-    <div class="overlay hidden">
+    <div class="overlay">
         <img src="images/notebook.png" width="356px" height="267px" alt="book" id="book">
-        <article>
+        <article class="book hidden">
             <h3>Output</h3>
             <h4>Crap Book</h4>
             <p>I am at the hands of a muse whenever she chooses to strike. The only thing that can truly keep me up for an entire night is a project in need of fleshing out.</p>
@@ -50,9 +52,9 @@
         </article>
     </div>
 
-    <div class="overlay hidden">
+    <div class="overlay">
         <img src="images/charger.png" width="356px" height="267px" alt="charger" id="charger">
-        <article>
+        <article class="charger hidden">
             <h3>Aesthetics</h3>
             <h4>iPhone charger</h4>
             <p>I spent a ridiculous amount of time buying this charger before I realized that color meant a lot to me. My poor brother waited for an hour.</p>
@@ -62,9 +64,9 @@
         </article>
     </div>
 
-    <div class="overlay hidden">
+    <div class="overlay">
         <img src="images/clothes.png" width="356px" height="267px" alt="clothes" id="clothes">
-        <article>
+        <article class="clothes hidden">
             <h3>Perfect Sets</h3>
             <h4>Fix Pile</h4>
             <p>When I'm bored, I think of the smallest possible closet I can own with the largest possible output. I'm waiting for the zombie apocalypse to begin so I can shove my best belongings in a single backpack.</p>
@@ -74,9 +76,9 @@
         </article>
     </div>
 
-    <div class="overlay hidden">
+    <div class="overlay">
         <img src="images/mirror.png" width="205px" height="299px" alt="mirror" id="mirror">
-        <article>
+        <article class="mirror hidden">
             <h3>Infinite Progress</h3>
             <h4>The mirror</h4>
             <p>Surely doing better is a linear journey, isn't it?</p>
