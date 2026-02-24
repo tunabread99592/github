@@ -14,7 +14,7 @@ setTimeout(function(){
 
 setTimeout(function(){
     document.querySelector('main').classList.add('is-visible');
-}, 4000);
+}, 3000);
 
 
 const openBtns = document.querySelectorAll('img');
@@ -45,6 +45,12 @@ for(let i=0; i<closeBtns.length; i++){
         openBtns[i].classList.remove('paused');
     });
 }
+
+const car = document.querySelector('#1')
+
+car.addEventListener('mousedown', function(){
+    car.src = 'images/carY.png';
+})
 
 // document.addEventListener('keydown', function (event){
 //     if (event.key === 'Escape') {
