@@ -9,7 +9,7 @@ body{
     color: white;
     overflow: hidden;
 }
-
+/* 
 .overlay{
     position: absolute;
     background-color: rgba(0,0,0,0.5);
@@ -19,7 +19,7 @@ body{
     height: 100vh;
 
     z-index: 1;
-}
+} */
 
 .overlay article{
     box-sizing: border-box;
@@ -124,7 +124,7 @@ h2{
 #bottomLeft{
     transform: rotate(-90deg);
     bottom: 22%;
-    left: -9%;
+    left: -5%;
 }
 
 /* images */
@@ -145,6 +145,16 @@ img:active{
     filter: drop-shadow(0 0 0 yellow);
 }
 
+.paused{
+    filter: blur(0px);
+    animation: none;
+    z-index: 3;
+
+    transform: translate(50%,50%);
+    top: 0%;
+    right: 30%;
+}
+
 #car{
     top: 5%;
     left: 5%;
@@ -152,26 +162,26 @@ img:active{
 
 #book{
     top: 2%;
-    left: 3cqb;
-    animation-delay: 5s, 7s;
+    left: 40%;
+    animation-delay: 5s;
 }
 
 #charger{
     top: 20%;
     right: 20%;
-    animation-delay: 2s, 3s;
+    animation-delay: 2s;
 }
 
 #clothes{
     bottom: 4%;
     left: 15%;
-    animation-delay: 6s, 1s;
+    animation-delay: 6s;
 }
 
 #mirror{
     bottom: 10%;
     right: 10%;
-    animation-delay: 4s, 5s;
+    animation-delay: 4s;
 }
 
 
