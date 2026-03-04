@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    padding: 4em;
+    background-color: black;
+    color: antiquewhite;
+}
+
+a{
+    font-style: none;
+    color: antiquewhite;
+}
+
+header{
+    line-height: 80%;
+    text-align: center;
+}
