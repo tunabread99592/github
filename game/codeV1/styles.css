@@ -1,0 +1,142 @@
+body {
+    font-family: Arial;
+    color: #333;
+    padding: 50px;
+    line-height: 1.5em;
+
+    background-image: url(images/background.jpg);
+    background-position: cover;
+    background-repeat: none;
+    height: 100vh;
+    font-family: "Jersey 10", sans-serif;
+}
+
+.showing{
+    visibility: visible;
+}
+
+.hidden{
+    display: none;
+}
+
+#characters{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 4em;
+}
+
+header{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+}
+
+header.large{
+    top: 40%;
+    left: 50%;
+}
+
+header.small{
+    top: 10%;
+}
+
+header.small img{
+    width: 50%;
+}
+
+#p1, #p2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pChoose{
+    margin: auto;
+}
+
+.pChoose button, .form, #rules article, main{
+    border: 3px solid #000;
+    background: #CED0BD;
+    box-shadow: 2px 2px 0 0 #000;
+}
+
+#rules{
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 1;
+}
+
+#rules article, main{
+    padding: 3em;
+    width: 300px;
+    height: 350px;
+    font-size: 24px;
+
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+}
+
+
+#rules ol{
+    list-style-type: disc;
+}
+
+.pChoose button{
+    display: inline-flex;
+    padding: 7px 17px;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+
+
+    color: #FFF;
+    text-align: center;
+    text-shadow: 2px 2px 0 #000;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #000;
+    font-family: "Jersey 10";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 2.16px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    justify-content: center;
+
+    padding: 1em;
+    font-size: 24px;
+
+}
+
+button { 
+    padding: 10px;
+}
+
+/* div {
+    padding: 20px;
+} */
+
+#gamecontrol, #score {
+    background-color: aliceblue;
+}
+
+#game {
+    background-color:#eaeaea;
+}
+#actions {
+    background-color: silver;
+}
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of PIG</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+
+
+	<link href="styles.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    
+    <header class="large">
+        <img src="images/title.png" width="500" alt="Wizard Ninja Pirate Cowboy">
+    </header>
+
+    <!-- <button id="question">?</button> -->
+
+    </div>
+
+    <section id="characters">
+        <div id="p1">
+            <div class="form">
+                <div class="label"><label for="name1">Player 1</label></div>   
+                <div class="input"><input type="text" id="name1" required></div>
+            </div>
+
+            <img src="images/cowboy.png" width="400" alt="player1">
+
+            <div class="pChoose">
+                <button>&#9668;</button>
+                <button>&#9658;</button>
+            </div>
+        </div>
+
+        <div id="p2">
+            <div class="form">
+                <div class="label"><label for="name2">Player 2</label></div>   
+                <div class="input"><input type="text" id="name2" required></div>
+            </div>
+
+            <img src="images/wizard.png" width="400" alt="player2">
+
+            <div class="pChoose">
+                <button>&#9668;</button>
+                <button>&#9658;</button>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        
+        <div id="game"></div>
+        <div id="actions"></div>
+        <div id="score"></div>
+
+        <div id="gamecontrol">
+            <h2>Start a Game</h2>
+            <button id="startgame">Randomly Pick the First Player, and Start the Game</button>
+        </div>
+    </main>
+
+    
+    <div id="rules" class="hidden">
+        <article>
+            <h1>RULES</h1>
+            <h2>Goal</h2>
+                <p>Roll the pair of dice to get to 100 <em>SWAG POINTS</em> first</p>
+            
+            <h2>If you roll a...</h2>
+                <ol>
+                    <li>1: your turn ends</li>
+                    <li>6: you deal the other die's amount of damage</li>
+                    <li>5: you heal the other die's amount of <em>SWAG</em></li>
+                    <li>3x streak: your roll is multiplied by 3</li>
+                    <li><em>SNAKE EYES</em>: all <em>SWAG</em> is lost</li>
+                </ol>
+            <button class="close">&times;</button>
+        </article>
+    </div>
+
+
+</body>
+</html>
