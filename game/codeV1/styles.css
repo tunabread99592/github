@@ -55,10 +55,23 @@ header.small img{
     margin: auto;
 }
 
-.pChoose button, .form, #rules article, main{
+.pChoose button, .form, #rules article, main, .health-bar{
     border: 3px solid #000;
     background: #CED0BD;
     box-shadow: 2px 2px 0 0 #000;
+}
+
+.health-bar{
+    width: 300px;
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+}
+.bar{
+    width: 100%;
+    height: 50%;
+    background: rgb(0, 210, 0);
+    transition: width 0.5s linear;
 }
 
 #rules{
