@@ -16,8 +16,13 @@
         roll2: 0,
         rollSum: 0,
         index: 0,
-        gameEnd: 29
+        gameEnd: 100,
     };
+
+    let attacker;
+    let defender;
+    let defenderIndex;
+
 
     startGame.addEventListener('click', function(){
         gameControl.innerHTML = '<h2>The Game Has Started</h2>';
@@ -48,14 +53,23 @@
         gameData.roll1 = Math.floor(Math.random()*6) + 1;
         gameData.roll2 = Math.floor(Math.random()*6) + 1;
 
-        // gameData.roll1 = 1;
-        // gameData.roll2 = 1;
-
         game.innerHTML = `<p>Roll the dice for the ${gameData.players[gameData.index]}</p>`;
         game.innerHTML += `<img src="images/${gameData.dice[gameData.roll1-1]}">
         <img src="images/${gameData.dice[gameData.roll2-1]}">`;
 
         gameData.rollSum = gameData.roll1 + gameData.roll2;
+
+
+        if(gameData.index){
+            attacker = gameData.score[0];
+            defender = gameData.score[1];
+            // defenderIndex = 0;
+        }
+        else {
+            attacker = gameData.score[1];
+            defender = gameData.score[0];
+            // defenderIndex = 1;
+        }
 
         // if two 1s are rolled
         if(gameData.rollSum === 2) {
@@ -70,15 +84,70 @@
             showCurrentScore();
         }
 
-        // if either die is a 1
-        else if(gameData.roll1 === 1 || gameData.roll2 === 1) {
-            console.log('one of the two dice rolled is a 1');
-            gameData.index ? (gameData.index = 0) : (gameData.index = 1);
-            game.innerHTML += `<p>Sorry, one of your rolls was a one, switching to ${gameData.players[gameData.index]}</p>`;
-            setTimeout(setUpTurn, 2000);
+
+        else if(gameData.roll1 === 6) {
+            console.log('Dice 1 is a 6');
+            game.innerHTML+= '<p>A direct hit!<p>';
+
+            gameData.score[defender] = defender - gameData.roll2;
+            console.log(gameData.score[gameData.index]);
+            console.log(gameData.roll2);
+
+
+
+
+
+
+
+
+
+            actionArea.innerHTML = '<button id="rollagain">Roll again</button> or <button id="pass">Pass</button>';
+
+            document.querySelector('#rollagain').addEventListener('click', function(){
+                throwDice();
+            });
+
+            document.querySelector('#pass').addEventListener('click', function(){
+                gameData.index ? (gameData.index = 0) : (gameData.index = 1);
+                setUpTurn();
+            });
+
+            checkWinningCondition();
+
+            // bottomLine();
         }
 
-        // if neither die is a 1
+
+        else if (gameData.roll2 === 6) {
+            console.log('Dice 2 is a 6');
+            game.innerHTML+= '<p>A direct hit!<p>';
+
+            gameData.score[defender] = defender - gameData.roll1;
+            console.log(gameData.score[gameData.index]);
+            console.log(gameData.roll1);
+
+
+
+
+
+
+
+            actionArea.innerHTML = '<button id="rollagain">Roll again</button> or <button id="pass">Pass</button>';
+
+            document.querySelector('#rollagain').addEventListener('click', function(){
+                throwDice();
+            });
+
+            document.querySelector('#pass').addEventListener('click', function(){
+                gameData.index ? (gameData.index = 0) : (gameData.index = 1);
+                setUpTurn();
+            });
+
+            checkWinningCondition();
+
+            // bottomLine();
+        }
+
         else {
             console.log('neither die was a 1, so the game continues');
             gameData.score[gameData.index] = gameData.score[gameData.index] + gameData.rollSum;
@@ -95,10 +164,55 @@
 
             checkWinningCondition();
         }
+
+        console.log
+            (`player 1 score: ${gameData.score[0]} 
+            player 2 score: ${gameData.score[1]}
+            ${gameData.roll1}, ${gameData.roll2}`
+            );
+     
+        // gameData.roll1 = 1;
+        // gameData.roll2 = 1;
+
+
+        
+        // else if(gameData.roll1 === 1 || gameData.roll2 === 1) {
+        //     console.log('one of the two dice rolled is a 1');
+        //     gameData.index ? (gameData.index = 0) : (gameData.index = 1);
+        //     game.innerHTML += `<p>Sorry, one of your rolls was a one, switching to ${gameData.players[gameData.index]}</p>`;
+        //     setTimeout(setUpTurn, 2000);
+        // }
+
+        
+        // else {
+        //     console.log('neither die was a 1, so the game continues');
+        //     gameData.score[gameData.index] = gameData.score[gameData.index] + gameData.rollSum;
+        //     actionArea.innerHTML = '<button id="rollagain">Roll again</button> or <button id="pass">Pass</button>';
+
+        //     document.querySelector('#rollagain').addEventListener('click', function(){
+        //         throwDice();
+        //     });
+
+        //     document.querySelector('#pass').addEventListener('click', function(){
+        //         gameData.index ? (gameData.index = 0) : (gameData.index = 1);
+        //         setUpTurn();
+        //     });
+
+        //     checkWinningCondition();
+        // }
+    }
+
+    function bottomLine(){
+        if(gameData.score[0]<0){
+            gameData.score[0]=0;
+        }
+        else if(gameData.score[1]<0){
+            gameData.score[1]=0;
+        };
     }
 
     function checkWinningCondition() {
-        console.log(gameData.players[gameData.index], gameData.score[gameData.index]);
+        // console.log(gameData.players[gameData.index], gameData.score[gameData.index]);
         if (gameData.score[gameData.index] > gameData.gameEnd) {
             score.innerHTML = `<h2>${gameData.players[gameData.index]} wins with ${gameData.score[gameData.index]} points!</h2>`;
 
