@@ -111,26 +111,6 @@ video{
 
     font-style: italic;
 }
-/* 
-#star{
-    filter:none;
-    z-index: 1000;
-    position: relative;
-    right: 10%;
-    bottom: 20%; 
-    width: 40%; 
-    height: auto;
-
-    display: flex;
-}
-
-#star img{
-    position: absolute;
-}
-
-#star p{
-    position: absolute;
-} */
 
 h1{
     font-weight: 900;
