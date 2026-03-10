@@ -9,6 +9,7 @@
     const commandH = document.querySelector('#commands h2');
     const commandS = document.querySelector('#commands p');
 
+    const main = document.querySelector('main');
     const healthBar = document.querySelectorAll('.health-bar');
 
     const gameData = {
@@ -25,6 +26,34 @@
         index: 0,
         gameEnd: 100,
     };
+
+//home screen--------------------------------------
+
+    const lockBtn = document.querySelector('#lock');
+    const header = document.querySelector('header');
+
+    lockBtn.addEventListener('click', function(){
+
+        const arrows = document.querySelectorAll('.pChoose');
+
+        header.className = 'small';
+        main.className = 'showing';
+        lockBtn.className = 'hidden';
+
+        arrows.forEach(function(arrow){
+            arrow.classList.remove('showing');
+            arrow.classList.add('hidden');
+
+            console.log('removing arrows');
+        })
+
+        healthBar.forEach(function(bar){
+            bar.classList.remove('hidden');
+            bar.classList.add('showing');
+
+            console.log('adding health bar');
+        })
+    });
 
 //player customization ----------------------------
 
@@ -62,20 +91,13 @@
    
 // start game --------------------------------------
 
+    document.querySelector('#quitBtn').addEventListener('click', function (){
+                location.reload();
+        });
+
     startGame.addEventListener('click', function(){
 
         startGame.style.display = 'none';
-
-        const arrows = document.querySelectorAll('.pChoose');
-        arrows.forEach(function(arrow){
-            arrow.classList.remove('showing');
-            arrow.classList.add('hidden');
-        })
-
-        healthBar.forEach(function(bar){
-            bar.classList.remove('hidden');
-            bar.classList.add('showing');
-        })
 
         gameData.selectedCharacters = [
             gameData.characters[characterIndex[0]],
@@ -87,10 +109,6 @@
 
         gameData.index = Math.round(Math.random());
                 console.log(gameData.index);
-
-        document.querySelector('#quitBtn').addEventListener('click', function (){
-                location.reload();
-        });
 
         setUpTurn();
         console.log('set up the turn');
@@ -227,7 +245,7 @@
             let damage = gameData.roll1 === 6 ? gameData.roll2 : gameData.roll1;
             gameData.score[defenderIndex] = Math.max(0, gameData.score[defenderIndex] - damage); 
     
-            setCommand('A direct hit!',`Taking ${damage} swag from ${gameData.players[defenderIndex]}`);
+            setCommand('Sabotage!',`Taking ${damage} swag from ${gameData.players[defenderIndex]}`);
 
             updateBar(defenderIndex);
             celebrate(attackerIndex);
