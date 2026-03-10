@@ -36,6 +36,10 @@
             </div>
 
             <div class="health-bar hidden" data-total="100" data-value="100">
+                <div class="tags">
+                    <p>Swag</p>
+                    <p>0/100</p>
+                </div>
                 <div class="bar"></div>
             </div>
         </div>
@@ -47,14 +51,18 @@
             </header>
 
             <main>
-                <div id="gamecontrol">
+                <div id="commands">
                     <h2>Start a Game</h2>
-                    <button id="startgame">Randomly Pick the First Player, and Start the Game</button>
+                    <p>Randomly pick the first player</p>
                 </div>
 
-                <div id="game"></div>
-                <div id="actions"></div>
-                <div id="score"></div>
+                <div id="table"></div>
+                <div id="actions">
+                    <button id="startgame" class="showing">Go Go Go</button>
+                </div>
+                <div id="quit">
+                    <button id="quitBtn">Quit Game</button>
+                </div>
             </main>
 
         </div>
@@ -75,6 +83,10 @@
             </div>
 
              <div class="health-bar hidden" data-total="100" data-value="0">
+                <div class="tags">
+                    <p>Swag</p>
+                    <p>0/100</p>
+                </div>
                 <div class="bar"></div>
             </div>
         </div>

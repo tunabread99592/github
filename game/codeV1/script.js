@@ -3,10 +3,11 @@
     console.log('reading JS');
 
     const startGame = document.querySelector('#startgame');
-    const gameControl = document.querySelector('#gamecontrol');
-    const game = document.querySelector('#game');
-    const scoreBoard = document.querySelector('#score');
-    const actionArea = document.querySelector('#actions');
+    const table = document.querySelector('#table');
+    const actions = document.querySelector('#actions');
+
+    const commandH = document.querySelector('#commands h2');
+    const commandS = document.querySelector('#commands p');
 
     const healthBar = document.querySelectorAll('.health-bar');
 
@@ -63,13 +64,17 @@
 
     startGame.addEventListener('click', function(){
 
+        startGame.style.display = 'none';
+
         const arrows = document.querySelectorAll('.pChoose');
         arrows.forEach(function(arrow){
-            arrow.classList.replace('showing','hidden');
+            arrow.classList.remove('showing');
+            arrow.classList.add('hidden');
         })
 
         healthBar.forEach(function(bar){
-            bar.classList.replace('hidden','showing');
+            bar.classList.remove('hidden');
+            bar.classList.add('showing');
         })
 
         gameData.selectedCharacters = [
@@ -80,15 +85,13 @@
         updateBar(0);
         updateBar(1);
 
-        gameControl.innerHTML = '<h2>The Game Has Started</h2>';
-        gameControl.innerHTML += '<button id="quit">Wanna Quit?</button>';
+        gameData.index = Math.round(Math.random());
+                console.log(gameData.index);
 
-        document.querySelector('#quit').addEventListener('click', function (){
+        document.querySelector('#quitBtn').addEventListener('click', function (){
                 location.reload();
         });
 
-        gameData.index = Math.round(Math.random());
-                console.log(gameData.index);
         setUpTurn();
         console.log('set up the turn');
     });
@@ -96,42 +99,33 @@
 //base functions------------------------------------
 
     function proceed() {
-        actionArea.innerHTML = '<button id="rollagain">Roll again</button> or <button id="pass">Pass</button>';
-        document.querySelector('#rollagain').addEventListener('click', function(){
-            throwDice();
-        });
+        actions.innerHTML = '<button id="rollagain">Roll again</button> or <button id="pass">Pass</button>';
+        document.querySelector('#rollagain').addEventListener('click', throwDice);
+
         document.querySelector('#pass').addEventListener('click', function(){
-            gameData.index ? (gameData.index = 0) : (gameData.index = 1);
+            switchPlayer();
             setUpTurn();
         });
     }
 
     function setUpTurn() {
-        game.innerHTML = `<p>Roll the dice for the ${gameData.players[gameData.index]}</p>`;
-        actionArea.innerHTML = '<button id="roll">Roll the Dice</button>';
 
-        document.querySelector('#roll').addEventListener('click', function(){
-            console.log('Roll the Dice!');
-            throwDice();
-        });
+        setCommand(`${gameData.players[gameData.index]}`,'Yer up');
+        actions.innerHTML = '<button id="roll">Roll the Dice</button>';
+
+        document.querySelector('#roll').addEventListener('click', throwDice);
     }
 
     function checkWinningCondition() {
         if (gameData.score[gameData.index] >= gameData.gameEnd) {
-            game.innerHTML = `<h2>${gameData.players[gameData.index]} wins with ${gameData.score[gameData.index]} points!</h2>`;
+            commandH.innerHTML = `${gameData.players[gameData.index]} wins!`
+            commandS.innerHTML = `with ${gameData.score[gameData.index]} points`;
 
-            actionArea.innerHTML = '';
-            document.querySelector('#quit').innerHTML = 'Start a New Game?';
+            actions.innerHTML = '';
+            // document.querySelector('#quitBtn').innerHTML = 'Start a New Game?';
         } else {
-            showCurrentScore();
+            updateBar();
         }
-    }
-
-    function showCurrentScore() {
-        scoreBoard.innerHTML =
-         `<p>The score is currently
-         <strong>${gameData.players[0]} : ${gameData.score[0]}</strong> and
-         <strong>${gameData.players[1]} : ${gameData.score[1]}</strong></p>`;
     }
 
     function switchPlayer(){
@@ -158,11 +152,12 @@
     };
 
     function displayDice(){
-        game.innerHTML = `<p>Roll the dice for the ${gameData.players[gameData.index]}</p>`;
+        commandH.innerHTML = `${gameData.players[gameData.index]}`;
+        commandS.innerHTML = 'Roll the dice';
         
-        game.innerHTML += `
-        <img class="dice" src="images/${gameData.dice[gameData.roll1-1]}">
-        <img class="dice" src="images/${gameData.dice[gameData.roll2-1]}">`;
+        table.innerHTML = `
+        <div class="bothDice"><img class="dice" src="images/${gameData.dice[gameData.roll1-1]}">
+        <img class="dice" src="images/${gameData.dice[gameData.roll2-1]}"></div>`;
     }
 
     function celebrate(player){
@@ -182,16 +177,23 @@
         const points = gameData.score[playerIndex];
         const total = parseInt(healthBar[playerIndex].dataset.total);
         const percent = Math.min(100, (points/total)*100);
+        const tagText = healthBar[playerIndex].querySelector('.tags p:last-child');
+        tagText.textContent = `${points}/${total}`;
 
         bar.style.width = percent + '%';
 
         healthBar[playerIndex].dataset.value = points;
     }
 
+    function setCommand(title,subtitle){
+        commandH.innerHTML = title;
+        commandS.innerHTML = subtitle;
+    }
+
 // playing--------------------------------
 
     function throwDice(){
-        actionArea.innerHTML = '';
+        actions.innerHTML = '';
 
         rollDice();
         displayDice();
@@ -202,21 +204,19 @@
         // SNAKE EYES
         if(gameData.rollSum === 2) {
 
-            game.innerHTML+= '<p>Oh snap! Snake eyes!</p>';
-        
             gameData.score[gameData.index] = 0;
             gameData.index = defenderIndex;
 
+            setCommand('Snake eyes!!!',`Switching to ${gameData.players[defenderIndex]}`);
             updateBar(attackerIndex);
-            showCurrentScore();
             setTimeout(setUpTurn, 2000);
             return;
         }
 
         // ONE 1
         else if(gameData.roll1 === 1 || gameData.roll2 === 1) {
-            game.innerHTML += `<p>Sorry, one of your rolls was a one, switching to ${gameData.players[defenderIndex]}</p>`;
-
+            
+            setCommand(`${gameData.players[attackerIndex]} rolled a 1`,`Switching to ${gameData.players[defenderIndex]}`);
             switchPlayer();
             setTimeout(setUpTurn, 2000);
             return;
@@ -224,13 +224,11 @@
 
         // ATTACK
         else if(gameData.roll1 === 6 || gameData.roll2 === 6) {
-            
-            game.innerHTML += '<p>A direct hit!</p>';
-
             let damage = gameData.roll1 === 6 ? gameData.roll2 : gameData.roll1;
-
             gameData.score[defenderIndex] = Math.max(0, gameData.score[defenderIndex] - damage); 
     
+            setCommand('A direct hit!',`Taking ${damage} swag from ${gameData.players[defenderIndex]}`);
+
             updateBar(defenderIndex);
             celebrate(attackerIndex);
         }
@@ -239,6 +237,7 @@
         else {
             gameData.score[attackerIndex] += gameData.rollSum;
 
+            setCommand(`${gameData.players[attackerIndex]} got ${gameData.rollSum} swag`,'Keep it comin');
             updateBar(attackerIndex);
         }
 
