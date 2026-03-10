@@ -15,66 +15,74 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    
-    <header class="large">
-        <img src="images/title.png" width="500" alt="Wizard Ninja Pirate Cowboy">
-    </header>
 
     <!-- <button id="question">?</button> -->
 
-    </div>
+
+<!-- characters ----------------------------------->
 
     <section id="characters">
-        <div id="p1">
+        <div class="character-select">
             <div class="form">
                 <div class="label"><label for="name1">Player 1</label></div>   
                 <div class="input"><input type="text" id="name1" required></div>
             </div>
 
-            <img src="images/cowboy.png" width="400" alt="player1">
+            <img src="images/cowboy1.png" width="400" alt="player1" class="displayed">
 
             <div class="pChoose showing">
-                <button>&#9668;</button>
-                <button>&#9658;</button>
+                <button class="left">&#9668;</button>
+                <button class="right">&#9658;</button>
             </div>
 
-            <div class="health-bar showing" data-total="100" data-value="100">
+            <div class="health-bar hidden" data-total="100" data-value="100">
                 <div class="bar"></div>
             </div>
         </div>
 
-        <div id="p2">
+        <!-- middle column------->
+        <div id="middle">
+            <header class="small">
+                    <img src="images/title.png" width="500" alt="Wizard Ninja Pirate Cowboy">
+            </header>
+
+            <main>
+                <div id="gamecontrol">
+                    <h2>Start a Game</h2>
+                    <button id="startgame">Randomly Pick the First Player, and Start the Game</button>
+                </div>
+
+                <div id="game"></div>
+                <div id="actions"></div>
+                <div id="score"></div>
+            </main>
+
+        </div>
+        <!-- end of middle -->
+
+
+        <div class="character-select">
             <div class="form">
                 <div class="label"><label for="name2">Player 2</label></div>   
                 <div class="input"><input type="text" id="name2" required></div>
             </div>
 
-            <img src="images/wizard.png" width="400" alt="player2">
+            <img src="images/wizard1.png" width="400" alt="player2" class="displayed flipped">
 
             <div class="pChoose showing">
-                <button>&#9668;</button>
-                <button>&#9658;</button>
+                <button class="left">&#9668;</button>
+                <button class="right">&#9658;</button>
             </div>
 
-             <div class="health-bar showing" data-total="100" data-value="100">
+             <div class="health-bar hidden" data-total="100" data-value="0">
                 <div class="bar"></div>
             </div>
         </div>
     </section>
 
-    <main>
-        
-        <div id="game"></div>
-        <div id="actions"></div>
-        <div id="score"></div>
 
-        <div id="gamecontrol">
-            <h2>Start a Game</h2>
-            <button id="startgame">Randomly Pick the First Player, and Start the Game</button>
-        </div>
-    </main>
 
-    
+
     <div id="rules" class="hidden">
         <article>
             <h1>RULES</h1>
