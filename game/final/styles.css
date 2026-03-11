@@ -1,0 +1,363 @@
+/* basics----------------------------------- */
+
+body {
+    font-family: "Jersey 10", sans-serif;
+    color: #333;
+
+    background-image: url(images/background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+
+    height: 100vh;
+    
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.showing{
+    display: flex;
+}
+
+.hidden{
+    display: none !important;
+}
+
+/* BUTTONS! etc.------------------------------- */
+
+#lock, #startgame, #roll, #rollagain, #pass{
+    color: #FFF;
+    padding: 10px 30px;
+    border: 3px solid #000000;
+    background: linear-gradient(180deg, #FFE606 -23.91%, #C64C00 100%);
+
+    font-size: 32px;
+    text-shadow: 2px 2px 0 #000;
+}
+
+#lock:hover, #startgame:hover, #roll:hover, #rollagain:hover, #pass:hover, #settings button:hover, #quitBtn:hover{
+    scale: 1.05;
+}
+
+#lock:active, #startgame:active, #roll:active, #rollagain:active, #pass:active, #settings button:active{
+    color: #9f9f9f;
+    background: linear-gradient(180deg, #b9a704 -23.91%, #883400 100%);
+    box-shadow: 5px 5px 5.1px 0 rgba(0, 0, 0, 0.66) inset;
+    scale: 0.9;
+}
+
+#rollagain, #pass{
+    font-size: 24px;
+}
+
+#settings button{
+    width: 50px;
+    border: 3px solid #A04A00;
+    background: linear-gradient(180deg, #FFE606 -23.91%, #C64C00 100%);
+
+    color: #FFF;
+    text-align: center;
+    text-shadow: 2px 2px 0 #000;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #000;
+
+    font-size: 36px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 1000;
+}
+
+#rules button{
+    position: absolute;
+    top: 10%;
+    right: 10%;
+}
+
+#quitBtn{
+    background-color:#C0C2B1;
+    padding: 5px 15px;
+    position: absolute;
+    bottom: 2%;
+    transform: translate(-50%,-50%);
+}
+
+#quitBtn:active{
+    background-color:#8c8e80;
+    box-shadow: 5px 5px 5.1px 0 rgba(0, 0, 0, 0.66) inset;
+}
+
+.pChoose button{
+    display: inline-flex;
+    padding: 7px 17px;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+
+    font-family: "Jersey 10";
+    font-weight: 400;
+
+    color: #FFF;
+    text-align: center;
+    text-shadow: 2px 2px 0 #000;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #000;
+
+    font-size: 36px;
+    line-height: normal;
+}
+
+.pChoose button:hover{
+    background-color: #a5a6a2;
+}
+
+.pChoose button:active{
+    color: #9f9f9f;
+    background: #838576;
+    box-shadow: 5px 5px 5.1px 0 rgba(0, 0, 0, 0.66) inset;
+}
+
+.pChoose button, form, #rules article, main, .health-bar{
+    border: 3px solid #000;
+    background: #CED0BD;
+    box-shadow: 2px 2px 0 0 #000;
+}
+
+/* settings---------------------------------- */
+
+#settings{
+    position: fixed;
+    top: 20px;
+    right: 20px;  
+
+    display: flex;
+    gap: 10px;
+}
+
+/* CHARACTERS------------------------------- */
+#characters{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 8em;
+
+    transition: all ease-in-out 2s;
+
+    max-width: 1200px;
+    width: 100%
+}
+
+.flipped{
+    transform: scaleX(-1);
+}
+
+.character-select{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 340px;
+
+    gap: 10px;
+    padding: 20px;
+}
+
+.displayed{
+    width: 300px;
+}
+
+.pChoose{
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes bounce{
+    0% { transform: translateY(0); }
+    20% { transform: translateY(-20px); }
+    40% { transform: translateY(0); }
+    60% { transform: translateY(-10px); }
+    80% { transform: translateY(0); }
+}
+
+.character-bounce{
+    animation: bounce 0.8s ease;
+}
+
+/* type name */
+    form{
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        justify-content: center;
+        text-align: center;
+
+        gap: 3px;
+        height: 50px;
+        width: 230px;
+        padding: 1em;
+        font-size: 24px;
+    }
+
+    form p{
+        margin: 0;
+        font-weight: bold;
+        font-style: italic;
+        text-transform: uppercase;
+        font-size: 30px;
+        letter-spacing: 3px;
+    }
+
+/* health bar*/
+
+    .health-bar{
+        width: 300px;
+        padding: 1em;
+        /* overflow: hidden;
+        position: relative; */
+
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .health-bar .tags{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .tags p{
+        margin: 0;
+        height: fit-content;
+        font-size: 24px;
+        text-transform: uppercase;
+    }
+
+    .bar{
+        width: 100%;
+        height: 25px;
+        background: rgb(0, 210, 0);
+        transition: width 0.5s linear;
+    }
+
+/* CHARACTER END------------------------------------- */
+
+/* middle------------------------------------------- */
+
+#middle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transform: translateY(-30px);
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+}
+
+header img{
+    width: 500px;
+    transition: all 0.6s ease;
+}
+
+header.small img:hover{
+    scale: 1.3;
+    rotate: 360deg;
+}
+
+header.small img{
+    width: 150px;
+}
+
+/* gameplay */
+
+main{
+    transform: translateY(120vh);
+    transition: transform 0.6s ease cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+
+    width: 350px;
+    height: 450px;
+    padding: 1em;
+
+    font-size: 24px;
+    text-align: center;
+}
+
+main.showing{
+    transform: translateY(0);
+}
+
+#table {
+    background-color:#C0C2B1;
+    height: 180px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#actions{
+    height: 50px;
+}
+
+#commands{
+    margin: 10px;
+}
+
+#commands p, #commands h2{
+    margin: 0px;
+}
+
+.bothDice{
+    width: fit-content;
+}
+
+.dice{
+    width: 100px;
+}
+
+strong{
+    color: #C64C00;
+    text-transform: uppercase;
+}
+
+/* rules-------------------------------------- */
+
+#rules{
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 1;
+}
+
+#rules article{
+    padding: 3em;
+    font-size: 24px;
+
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+}
+
+#rules ol{
+    list-style-type: disc;
+}

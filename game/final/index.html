@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of PIG</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+
+
+	<link href="styles.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <section id="settings">
+        <button id="toRules">?</button>
+        <button id="toMusic">&#9658;</button>
+        <audio id="bgMusic" src="images/evilLair.wav" loop></audio>
+    </section>
+
+<!-- characters ----------------------------------->
+
+    <section id="characters">
+        <div class="character-select">
+            <form>
+                <label for="name1">Player 1</label>
+                <input id="name1" placeholder="Enter name" maxlength="12" required>
+            </form>
+
+
+            <img src="images/cowboy1.png" width="400" alt="player1" class="displayed">
+
+            <div class="pChoose showing">
+                <button class="left">&#9668;</button>
+                <button class="right">&#9658;</button>
+            </div>
+
+            <div class="health-bar hidden" data-total="100" data-value="0">
+                <div class="tags">
+                    <p>Swag</p>
+                    <p>0/100</p>
+                </div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        <!-- middle column------->
+        <div id="middle">
+            <header class="large">
+                    <img src="images/logo.png" width="500" alt="Wizard Ninja Pirate Cowboy">
+            </header>
+
+            <button id="lock" class="showing">Lock It In</button>
+
+            <main class="hidden">
+                <div id="commands">
+                    <h2>Start a Game</h2>
+                    <p>Randomly pick the first player</p>
+                </div>
+
+                <div id="table"></div>
+                <div id="actions">
+                    <button id="startgame" class="showing">Go Go Go</button>
+                </div>
+                <div id="quit">
+                    <button id="quitBtn">Quit Game</button>
+                </div>
+            </main>
+
+        </div>
+        <!-- end of middle -->
+
+
+        <div class="character-select">
+            <form>
+                <label for="name2">Player 2</label>
+                <input id="name2" placeholder="Enter name" maxlength="12" required>
+            </form>
+
+            <img src="images/wizard1.png" width="400" alt="player2" class="displayed flipped">
+
+            <div class="pChoose showing">
+                <button class="left">&#9668;</button>
+                <button class="right">&#9658;</button>
+            </div>
+
+             <div class="health-bar hidden" data-total="100" data-value="0">
+                <div class="tags">
+                    <p>Swag</p>
+                    <p>0/100</p>
+                </div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <div id="rules" class="hidden">
+        <article>
+            <button id="close">&times;</button>
+            <h1>RULES</h1>
+            <h2>Goal</h2>
+                <p>First to 100 <em>SWAG POINTS</em> wins</p>
+            
+            <h2>If you roll a...</h2>
+                <ol>
+                    <li>1: your turn ends</li>
+                    <li>6: you deal the other die's amount of damage</li>
+                    <li>5: you heal the other die's amount of <em>SWAG</em></li>
+                    <li>3x streak: your roll is multiplied by 3</li>
+                    <li><em>SNAKE EYES</em>: all <em>SWAG</em> is lost</li>
+                </ol>
+        </article>
+    </div>
+
+
+</body>
+</html>
