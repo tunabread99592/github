@@ -127,7 +127,7 @@ body {
     box-shadow: 5px 5px 5.1px 0 rgba(0, 0, 0, 0.66) inset;
 }
 
-.pChoose button, form, #rules article, main, .health-bar{
+.pChoose button, form, #rules article, #main, .health-bar{
     border: 3px solid #000;
     background: #CED0BD;
     box-shadow: 2px 2px 0 0 #000;
@@ -335,9 +335,9 @@ header.small img:hover{
 
 /* gameplay */
 
-main{
+#main{
     transform: translateY(120vh);
-    transition: transform 0.6s ease cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 0.6s ease;
 
     display: flex;
     flex-direction: column;
@@ -356,7 +356,7 @@ main{
     text-align: center;
 }
 
-main.showing{
+#main.showing{
     transform: translateY(0);
     transform: translateY(-50%);
     top: 55%;

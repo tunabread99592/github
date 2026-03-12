@@ -17,7 +17,7 @@
     const lockBtn = document.querySelector('#lock');
     const header = document.querySelector('header');
 
-    const main = document.querySelector('main');
+    const main = document.querySelector('#main');
     const healthBar = document.querySelectorAll('.health-bar');
     const arrows = document.querySelectorAll('.pChoose');
     const form = document.querySelectorAll('form');
