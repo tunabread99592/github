@@ -29,6 +29,21 @@
 
         characters: ['wizard1.png', 'pirate1.png', 'ninja1.png', 'cowboy1.png'],
 
+        soundFiles: [
+            'btnUp.wav',
+            'btnDown.wav',
+            'diceRoll.wav',
+            'diceClatter.wav',
+            'wizard.wav',
+            'wizardC.wav',
+            'ninja.wav',
+            'ninjaC.wav',
+            'pirate.wav',
+            'pirateC.wav',
+            'cowboy.wav',
+            'cowboyC.wav',
+        ],
+
         score: [0, 0],
         roll1: 0,
         roll2: 0,
@@ -55,73 +70,81 @@
     }, 100);
     }
 
-    function fadeOut(audio){
-        const fade = setInterval(function(){
-            if(audio.volume > 0.1){
-                audio.volume -= 0.1;
-            } else {
-                audio.volume = 0;
-                clearInterval(fade);
-            }
-        }, 100);
-    }
+    // function fadeOut(audio){
+    //     const fade = setInterval(function(){
+    //         if(audio.volume > 0.1){
+    //             audio.volume -= 0.1;
+    //         } else {
+    //             audio.volume = 0;
+    //             clearInterval(fade);
+    //         }
+    //     }, 100);
+    // }
 
     musicBtn.addEventListener('click', function(){
         if (music.paused) {
             fadeIn(music);
             musicBtn.innerHTML = "&#x23F8;";
+            playSound(0);
         } else {
             music.pause();
             musicBtn.innerHTML = "&#9658;";
+            playSound(1);
         }
     });
 
     rulesBtn.addEventListener('click', function(){
         rules.className = 'showing';
+        playSound(0);
     });
 
     closeBtn.addEventListener('click', function(){
         rules.className = 'hidden';
+        playSound(1);
     });
 
 //home screen--------------------------------------
 
     lockBtn.addEventListener('click', function(){
-        const name1 = document.querySelector('#name1').value;
-        const name2 = document.querySelector('#name2').value;
-        const names = [name1, name2];
+        playSound(0);
 
-        gameData.players[0] = name1 || 'Player 1';
-        gameData.players[1] = name2 || 'Player 2';
+        setTimeout(function(){
+            const name1 = document.querySelector('#name1').value;
+            const name2 = document.querySelector('#name2').value;
+            const names = [name1, name2];
 
-        header.className = 'small';
-        main.className = 'showing';
-        lockBtn.className = 'hidden';
+            gameData.players[0] = name1 || 'Player 1';
+            gameData.players[1] = name2 || 'Player 2';
 
-        form.forEach(function(box, index){
-            const input = box.querySelector('input');
+            header.className = 'small';
+            main.className = 'showing';
+            lockBtn.className = 'hidden';
 
-            const nameTag = document.createElement('p');
-            nameTag.classList.add('player-name');
-            nameTag.textContent = names[index];
+            form.forEach(function(box, index){
+                const input = box.querySelector('input');
 
-            box.insertBefore(nameTag, box.firstChild);
-            input.remove();
-        });
+                const nameTag = document.createElement('p');
+                nameTag.classList.add('player-name');
+                nameTag.textContent = names[index];
 
-        arrows.forEach(function(arrow){
-            arrow.classList.remove('showing');
-            arrow.classList.add('hidden');
+                box.insertBefore(nameTag, box.firstChild);
+                input.remove();
+            });
 
-            console.log('removing arrows');
-        })
+            arrows.forEach(function(arrow){
+                arrow.classList.remove('showing');
+                arrow.classList.add('hidden');
 
-        healthBar.forEach(function(bar){
-            bar.classList.remove('hidden');
-            bar.classList.add('showing');
+                console.log('removing arrows');
+            })
 
-            console.log('adding health bar');
-        })
+            healthBar.forEach(function(bar){
+                bar.classList.remove('hidden');
+                bar.classList.add('showing');
+
+                console.log('adding health bar');
+            })
+        }, 50);
     });
 
 //player images ----------------------------
@@ -145,14 +168,15 @@
         //NEXT 
         next.addEventListener('click', function(){
             characterIndex[player] = (characterIndex[player] + 1) % gameData.characters.length;
-
             updateImage();
+            playSound(0);
         });
 
         //PREVIOUS
         prev.addEventListener('click', function(){
             characterIndex[player] = (characterIndex[player] - 1 + gameData.characters.length) % gameData.characters.length;
             updateImage();
+            playSound(1);
         });
     });
 
@@ -160,11 +184,15 @@
 // start game --------------------------------------
 
     document.querySelector('#quitBtn').addEventListener('click', function (){
-                location.reload();
-        });
+        playSound(1);
+
+        setTimeout(function(){
+            location.reload();
+        }, 500);
+    });
 
     startGame.addEventListener('click', function(){
-
+        playSound(0);
         startGame.style.display = 'none';
 
         gameData.selectedCharacters = [
@@ -198,9 +226,13 @@
 
     function proceed() {
         actions.innerHTML = '<button id="rollagain">Roll again</button> or <button id="pass">Pass</button>';
-        document.querySelector('#rollagain').addEventListener('click', rollDice);
+        document.querySelector('#rollagain').addEventListener('click', function(){
+            playSound(0);
+            rollDice();
+        });
 
         document.querySelector('#pass').addEventListener('click', function(){
+            playSound(0);
             switchPlayer();
             setUpTurn();
         });
@@ -269,28 +301,22 @@
     }
 
     function highlight(){
-
         selectors.forEach(function(card){
             card.classList.remove('active-player');
         })
 
         selectors[gameData.index].classList.add('active-player');
+    }
 
-        // form.forEach(function(box){
-        //     box.classList.remove('active-player');
-        // })
-
-        // healthBar.forEach(function(bar){
-        //     bar.classList.remove('active-player');
-        // })
-
-        // form[gameData.index].classList.add('active-player');
-        // healthBar[gameData.index].classList.add('active-player');
+    function playSound(index){
+        const sound = new Audio(`audio/${gameData.soundFiles[index]}`);
+        sound.play();
     }
 
 // playing--------------------------------
 
 function rollDice(){
+        playSound(2);
         setCommand('<strong>Rolling...</strong>','almost there');
         table.innerHTML = `
             <div class="bothDice"><img class="dice" src="images/diceRoll.gif">
@@ -303,6 +329,7 @@ function rollDice(){
     };
 
     function displayDice(){
+        playSound(3);
         gameData.roll1 = Math.floor(Math.random()*6) + 1;
         gameData.roll2 = Math.floor(Math.random()*6) + 1;
         gameData.rollSum = gameData.roll1 + gameData.roll2;
