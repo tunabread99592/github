@@ -20,6 +20,7 @@
     const main = document.querySelector('main');
     const healthBar = document.querySelectorAll('.health-bar');
     const arrows = document.querySelectorAll('.pChoose');
+    const form = document.querySelectorAll('form');
 
     const gameData = {
         dice: ['1die.png', '2die.png', '3die.png',
@@ -33,7 +34,7 @@
         roll2: 0,
         rollSum: 0,
         index: 0,
-        gameEnd: 100,
+        gameEnd: 30,
     };
 
 //settings----------------------------------------
@@ -96,8 +97,6 @@
         header.className = 'small';
         main.className = 'showing';
         lockBtn.className = 'hidden';
-
-        const form = document.querySelectorAll('form');
 
         form.forEach(function(box, index){
             const input = box.querySelector('input');
@@ -177,7 +176,8 @@
         updateBar(1);
 
         gameData.index = Math.round(Math.random());
-        setCommand(`<strong>${gameData.players[gameData.index]}</strong> starts`, 'First turn');
+        setCommand(`<strong class="player-name">${gameData.players[gameData.index]}</strong> starts`, 'First turn');
+        highlight();
         celebrate(gameData.index);
         setTimeout(setUpTurn,2000);
     });
@@ -185,7 +185,12 @@
 //base functions------------------------------------
 
     function setUpTurn() {
-        setCommand(`${gameData.players[gameData.index]}`,'Yer up');
+        table.className = 'showing';
+        setCommand(`<strong class="player-name">${gameData.players[gameData.index]}</strong>`,'Yer up');
+        table.innerHTML = `
+            <div class="bothDice"><img class="dice" src="images/diceCube.png">
+            <img class="dice" src="images/diceCube.png"></div>`;
+            
         actions.innerHTML = '<button id="roll">Roll the Dice</button>';
 
         document.querySelector('#roll').addEventListener('click', rollDice);
@@ -203,19 +208,18 @@
 
     function checkWinningCondition() {
         if (gameData.score[gameData.index] >= gameData.gameEnd) {
-            setCommand(`${gameData.players[gameData.index]} wins!`,`with ${gameData.score[gameData.index]} points`);
-            celebrate(attackerIndex);
+            setCommand(`<strong class="player-name">${gameData.players[gameData.index]}</strong> wins!`,`with ${gameData.score[gameData.index]} points`);
+            celebrate(gameData.index);
 
             actions.innerHTML = '';
-            // document.querySelector('#quitBtn').innerHTML = 'Start a New Game?';
         } else {
-            // updateBar();
             proceed();
         }
     }
 
     function switchPlayer(){
         gameData.index = 1 - gameData.index;
+        highlight();
     }
 
     function celebrate(player){
@@ -246,12 +250,48 @@
     function setCommand(title,subtitle){
         commandH.innerHTML = title;
         commandS.innerHTML = subtitle;
+
+        function colorStrong(strongEl){
+            if (!strongEl) return;
+            const text = strongEl.textContent;
+            if (text === gameData.players[0]) {
+                strongEl.style.color = 'rgb(217, 72, 0)';
+            } else if (text === gameData.players[1]) {
+                strongEl.style.color = 'rgb(0, 0, 199)';
+            } else {
+                strongEl.style.color = '#333';
+            }
+        }
+
+        commandH.querySelectorAll('.player-name').forEach(colorStrong);
+
+        commandS.querySelectorAll('.player-name').forEach(colorStrong);
+    }
+
+    function highlight(){
+
+        selectors.forEach(function(card){
+            card.classList.remove('active-player');
+        })
+
+        selectors[gameData.index].classList.add('active-player');
+
+        // form.forEach(function(box){
+        //     box.classList.remove('active-player');
+        // })
+
+        // healthBar.forEach(function(bar){
+        //     bar.classList.remove('active-player');
+        // })
+
+        // form[gameData.index].classList.add('active-player');
+        // healthBar[gameData.index].classList.add('active-player');
     }
 
 // playing--------------------------------
 
 function rollDice(){
-        setCommand('Rolling...','almost there');
+        setCommand('<strong>Rolling...</strong>','almost there');
         table.innerHTML = `
             <div class="bothDice"><img class="dice" src="images/diceRoll.gif">
             <img class="dice" src="images/diceRoll.gif"></div>`;
@@ -284,7 +324,7 @@ function rollDice(){
             gameData.score[gameData.index] = 0;
             gameData.index = defenderIndex;
 
-            setCommand('Snake eyes!!!',`Switching to <strong>${gameData.players[defenderIndex]}</strong>`);
+            setCommand('Snake eyes!!!',`Switching to <strong class="player-name">${gameData.players[defenderIndex]}</strong>`);
             updateBar(attackerIndex);
             setTimeout(setUpTurn, 2000);
             return;
@@ -293,7 +333,7 @@ function rollDice(){
         // ONE 1
         else if(gameData.roll1 === 1 || gameData.roll2 === 1) {
             
-            setCommand(`${gameData.players[attackerIndex]} rolled a 1`,`Switching to <strong>${gameData.players[defenderIndex]}</strong>`);
+            setCommand(`<strong class="player-name">${gameData.players[attackerIndex]}</strong> rolled a 1`,`Switching to <strong>${gameData.players[defenderIndex]}</strong>`);
             switchPlayer();
             setTimeout(setUpTurn, 2000);
             return;
@@ -304,7 +344,7 @@ function rollDice(){
             let damage = gameData.roll1 === 6 ? gameData.roll2 : gameData.roll1;
             gameData.score[defenderIndex] = Math.max(0, gameData.score[defenderIndex] - damage); 
     
-            setCommand('Sabotage!',`Taking ${damage} swag from <strong>${gameData.players[defenderIndex]}</strong>`);
+            setCommand('Sabotage!',`Taking ${damage} swag from <strong class="player-name">${gameData.players[defenderIndex]}</strong>`);
 
             updateBar(defenderIndex);
             celebrate(attackerIndex);
@@ -314,7 +354,7 @@ function rollDice(){
         else {
             gameData.score[attackerIndex] += gameData.rollSum;
 
-            setCommand(`${gameData.players[attackerIndex]} got ${gameData.rollSum} swag`,'Right on');
+            setCommand(`<strong class="player-name">${gameData.players[attackerIndex]}</strong> got ${gameData.rollSum} swag`,'Right on');
             updateBar(attackerIndex);
         }
 
@@ -323,6 +363,7 @@ function rollDice(){
             player 2 score: ${gameData.score[1]}
             ${gameData.roll1}, ${gameData.roll2}`
         );
+
         checkWinningCondition();
     }
 

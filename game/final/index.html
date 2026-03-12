@@ -25,7 +25,7 @@
 <!-- characters ----------------------------------->
 
     <section id="characters">
-        <div class="character-select">
+        <div class="character-select player1">
             <form>
                 <label for="name1">Player 1</label>
                 <input id="name1" placeholder="Enter name" maxlength="12" required>
@@ -39,10 +39,10 @@
                 <button class="right">&#9658;</button>
             </div>
 
-            <div class="health-bar hidden" data-total="100" data-value="0">
+            <div class="health-bar hidden" data-total="30" data-value="0">
                 <div class="tags">
                     <p>Swag</p>
-                    <p>0/100</p>
+                    <p>0/30</p>
                 </div>
                 <div class="bar"></div>
             </div>
@@ -50,19 +50,14 @@
 
         <!-- middle column------->
         <div id="middle">
-            <header class="large">
-                    <img src="images/logo.png" width="500" alt="Wizard Ninja Pirate Cowboy">
-            </header>
-
-            <button id="lock" class="showing">Lock It In</button>
 
             <main class="hidden">
                 <div id="commands">
-                    <h2>Start a Game</h2>
+                    <h2><strong>Start a Game</strong></h2>
                     <p>Randomly pick the first player</p>
                 </div>
 
-                <div id="table"></div>
+                <div id="table" class="hidden"></div>
                 <div id="actions">
                     <button id="startgame" class="showing">Go Go Go</button>
                 </div>
@@ -71,11 +66,17 @@
                 </div>
             </main>
 
+            <header class="large">
+                    <img src="images/logo.png" width="500" alt="Wizard Ninja Pirate Cowboy">
+            </header>
+
+            <button id="lock" class="showing">Lock It In</button>
+
         </div>
         <!-- end of middle -->
 
 
-        <div class="character-select">
+        <div class="character-select player2">
             <form>
                 <label for="name2">Player 2</label>
                 <input id="name2" placeholder="Enter name" maxlength="12" required>
@@ -88,10 +89,10 @@
                 <button class="right">&#9658;</button>
             </div>
 
-             <div class="health-bar hidden" data-total="100" data-value="0">
+             <div class="health-bar hidden" data-total="30" data-value="0">
                 <div class="tags">
                     <p>Swag</p>
-                    <p>0/100</p>
+                    <p>0/30</p>
                 </div>
                 <div class="bar"></div>
             </div>
@@ -105,17 +106,22 @@
         <article>
             <button id="close">&times;</button>
             <h1>RULES</h1>
-            <h2>Goal</h2>
-                <p>First to 100 <em>SWAG POINTS</em> wins</p>
+
+            <div>
+                <h2>Goal</h2>
+                <p>First to <strong>30 SWAG POINTS</strong> wins</p>
+            </div>
             
-            <h2>If you roll a...</h2>
-                <ol>
-                    <li>1: your turn ends</li>
-                    <li>6: you deal the other die's amount of damage</li>
-                    <li>5: you heal the other die's amount of <em>SWAG</em></li>
-                    <li>3x streak: your roll is multiplied by 3</li>
-                    <li><em>SNAKE EYES</em>: all <em>SWAG</em> is lost</li>
-                </ol>
+            <div>
+                <h2>If you roll a...</h2>
+                    <ol>
+                        <li>1: your turn ends</li>
+                        <li>6: <strong>SABOTAGE!</strong> You deal the other die's amount of damage</li>
+                        <!-- <li>5: you heal the other die's amount of <em>SWAG</em></li>
+                        <li>3x streak: your roll is multiplied by 3</li> -->
+                        <li><strong>SNAKE EYES</strong>: all <strong>SWAG</strong> is lost</li>
+                    </ol>
+            </div>
         </article>
     </div>
 

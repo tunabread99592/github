@@ -39,11 +39,11 @@ body {
     text-shadow: 2px 2px 0 #000;
 }
 
-#lock:hover, #startgame:hover, #roll:hover, #rollagain:hover, #pass:hover, #settings button:hover, #quitBtn:hover{
+#lock:hover, #startgame:hover, #roll:hover, #rollagain:hover, #pass:hover, #settings button:hover, #quitBtn:hover, #close:hover{
     scale: 1.05;
 }
 
-#lock:active, #startgame:active, #roll:active, #rollagain:active, #pass:active, #settings button:active{
+#lock:active, #startgame:active, #roll:active, #rollagain:active, #pass:active, #settings button:active, #close:active{
     color: #9f9f9f;
     background: linear-gradient(180deg, #b9a704 -23.91%, #883400 100%);
     box-shadow: 5px 5px 5.1px 0 rgba(0, 0, 0, 0.66) inset;
@@ -54,7 +54,7 @@ body {
     font-size: 24px;
 }
 
-#settings button{
+#settings button, #close{
     width: 50px;
     border: 3px solid #A04A00;
     background: linear-gradient(180deg, #FFE606 -23.91%, #C64C00 100%);
@@ -70,10 +70,18 @@ body {
     font-weight: 1000;
 }
 
+
 #rules button{
     position: absolute;
     top: 10%;
     right: 10%;
+}
+
+#lock{
+    /* position: static; */
+
+    position: absolute;
+    bottom: 20%;
 }
 
 #quitBtn{
@@ -187,6 +195,10 @@ body {
     animation: bounce 0.8s ease;
 }
 
+.player-name, strong{
+    text-transform: uppercase;
+}
+
 /* type name */
     form{
         display: flex;
@@ -209,6 +221,15 @@ body {
         text-transform: uppercase;
         font-size: 30px;
         letter-spacing: 3px;
+    }
+
+    input{
+        padding: 5px 15px;
+        border: none;
+    }
+
+    input:focus{
+        background-color: #a5a6a2;
     }
 
 /* health bar*/
@@ -243,6 +264,33 @@ body {
         transition: width 0.5s linear;
     }
 
+    @keyframes pulseGlow{
+        0%{ box-shadow: 0 0 10px currentColor; }
+        50%{ box-shadow: 0 0 25px currentColor; }
+        100%{ box-shadow: 0 0 10px currentColor; }
+    }
+
+    /* .active-player{
+        transform: scale(1.05);
+        transition: all 0.3s ease;
+    } */
+
+    .player1{
+        color: rgb(217, 72, 0);
+    }
+
+    .player2{
+        color: rgb(0, 0, 199);
+    }
+
+    .active-player form, .active-player .health-bar{
+        transform: scale(1.05);
+        transition: all 0.3s ease;
+        border: 3px solid !important;
+        animation: pulseGlow 3s infinite;
+    }
+
+
 /* CHARACTER END------------------------------------- */
 
 /* middle------------------------------------------- */
@@ -253,25 +301,36 @@ body {
     align-items: center;
     justify-content: center;
 
-    transform: translateY(-30px);
     width: 300px;
     padding: 0;
     margin: 0;
     gap: 20px;
 }
 
+header{
+    /* position: static; */
+    position: absolute;
+    transform: translateY(-50%);
+    top: 40%;
+    transition: all 0.6s ease;
+}
+
 header img{
     width: 500px;
-    transition: all 0.6s ease;
+}
+
+header.small{
+    top: 5%;
+    transform: translateY(0);
+}
+
+header.small img{
+    width: 150px;
 }
 
 header.small img:hover{
     scale: 1.3;
     rotate: 360deg;
-}
-
-header.small img{
-    width: 150px;
 }
 
 /* gameplay */
@@ -284,10 +343,13 @@ main{
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    position: relative;
-
     width: 350px;
-    height: 450px;
+
+    /* height: 450px; */
+    /* position: static; */
+
+    position: absolute;
+    height: fit-content;
     padding: 1em;
 
     font-size: 24px;
@@ -296,6 +358,8 @@ main{
 
 main.showing{
     transform: translateY(0);
+    transform: translateY(-50%);
+    top: 55%;
 }
 
 #table {
@@ -310,13 +374,14 @@ main.showing{
     gap: 10px;
 }
 
-#actions{
+#actions, #quit{
     height: 50px;
 }
 
 #commands{
     margin: 10px;
 }
+
 
 #commands p, #commands h2{
     margin: 0px;
@@ -328,11 +393,6 @@ main.showing{
 
 .dice{
     width: 100px;
-}
-
-strong{
-    color: #C64C00;
-    text-transform: uppercase;
 }
 
 /* rules-------------------------------------- */
@@ -349,15 +409,29 @@ strong{
 }
 
 #rules article{
-    padding: 3em;
+    padding: 2.5em;
     font-size: 24px;
+
+    width: 350px;
 
     position: absolute;
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
+    gap: 20px;
+
+    margin: 0;
+}
+
+#rules article div, #rules h1{
+    padding-bottom: 20px;
+}
+
+#rules h1, #rules h2, #rules p{
+    margin: 0;
 }
 
 #rules ol{
     list-style-type: disc;
+    margin: 0;
 }
