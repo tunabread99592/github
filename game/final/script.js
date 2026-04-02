@@ -27,7 +27,7 @@
             '4die.png', '5die.png', '6die.png'],
         players: ['player 1', 'player 2'],
 
-        characters: ['wizard1.png', 'pirate1.png', 'ninja1.png', 'cowboy1.png'],
+        characters: ['wizardR.png', 'pirateR.png', 'ninjaR.png', 'cowboyR.png'],
 
         soundFiles: [
             'btnUp.wav',
@@ -256,10 +256,31 @@
 
     function celebrate(player){
         const img = document.querySelectorAll('.displayed')[player];
-
         const normal = img.src;
-        const celebrate = normal.replace('1.png','2.png');
+        const celebrate = normal.replace('R.png','A.gif');
         img.src = celebrate;
+
+        setTimeout(function(){
+            img.src = normal;
+        },2000);
+    }
+
+    function hurt(player){
+        const img = document.querySelectorAll('.displayed')[player];
+        const normal = img.src;
+        const hurt = normal.replace('R.png','H.png');
+        img.src = hurt;
+
+        setTimeout(function(){
+            img.src = normal;
+        },2000);
+    }
+
+    function nice(player){
+        const img = document.querySelectorAll('.displayed')[player];
+        const normal = img.src;
+        const nice = normal.replace('R.png','N.png');
+        img.src = nice;
 
         setTimeout(function(){
             img.src = normal;
@@ -353,6 +374,7 @@ function rollDice(){
 
             setCommand('Snake eyes!!!',`Switching to <strong class="player-name">${gameData.players[defenderIndex]}</strong>`);
             updateBar(attackerIndex);
+            hurt(attackerIndex);
             setTimeout(setUpTurn, 2000);
             return;
         }
@@ -362,6 +384,7 @@ function rollDice(){
             
             setCommand(`<strong class="player-name">${gameData.players[attackerIndex]}</strong> rolled a 1`,`Switching to <strong>${gameData.players[defenderIndex]}</strong>`);
             switchPlayer();
+            hurt(attackerIndex);
             setTimeout(setUpTurn, 2000);
             return;
         }
@@ -375,6 +398,7 @@ function rollDice(){
 
             updateBar(defenderIndex);
             celebrate(attackerIndex);
+            hurt(defenderIndex);
         }
 
         // NORMAL ROLL
@@ -383,6 +407,7 @@ function rollDice(){
 
             setCommand(`<strong class="player-name">${gameData.players[attackerIndex]}</strong> got ${gameData.rollSum} swag`,'Right on');
             updateBar(attackerIndex);
+            nice(attackerIndex);
         }
 
         console.log(
